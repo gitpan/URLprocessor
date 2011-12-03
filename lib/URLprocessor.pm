@@ -27,7 +27,7 @@ our @EXPORT = qw(
 
 );
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 # Let's rock.
@@ -423,17 +423,21 @@ This class implements methods for the validation of a URL. You can build your ow
 or modify an already existing object.
 
 A right URL must contain:
-- protocol (scheme)
-- host
+
+  protocol (scheme)
+  host
 
 Optional parts of a URL:
-- login and passwd
-- port
-- local path
+
+  login and passwd
+  port
+  local path
+
 
 Optional parts of a local path:
-- parameters (query)
-- fragment (label)
+
+  parameters (query)
+  fragment (label)
 
 
 =head1 METHODS
@@ -441,6 +445,7 @@ Optional parts of a local path:
 You have an access to some useful methods:
 
 =item $url = URLprocessor->new( )
+
 =item $url = URLprocessor->new( $str )
 
 Construct new URL object and return a reference to it.
@@ -463,35 +468,45 @@ Get string representation of the global part of a URL object (local path, query,
 
 
 =item $url->protocol
+
 =item $url->protocol( $str )
+
 =item $url->protocol( undef )
 
 Get and set a protocol. A string is translated to a lower case.
 
 
 =item $url->login
+
 =item $url->login( $str )
+
 =item $url->login( undef )
 
 Get and set a login.
 
 
 =item $url->passwd
+
 =item $url->passwd( $str )
+
 =item $url->passwd( undef )
 
 Get and set a passwd.
 
 
 =item $url->host
+
 =item $url->host( $str )
+
 =item $url->host( undef )
 
 Get and set a host. The host is translated to a lower case.
 
 
 =item $url->port
+
 =item $url->port( $str )
+
 =item $url->port( undef )
 
 Get and set a port. Here you can write anything but remember that the port must be a numeric value.
@@ -499,15 +514,19 @@ If not, valid_status return 0.
 
 
 =item $url->localpath
+
 =item $url->localpath( $str )
+
 =item $url->localpath( \@array )
+
 =item $url->localpath( undef )
 
 Get and set a local path (with file, without query).
 Only SCALAR, ARRAY and undef are allowed to set the localpath.
 You should remember about '/' at the end of @array if it is a directory.
 For example:
-@array = ('dir1', 'dir2', 'dir3/')
+
+    @array = ('dir1', 'dir2', 'dir3/')
 
 
 =item $url->localpath_array
@@ -516,13 +535,16 @@ Get an array of the parts of a local path.
 
 
 =item $url->fragment
+
 =item $url->fragment( $str )
+
 =item $url->fragment( undef )
 
 Get and set a fragment. This is a part of a URL after '#'.
 
 
 =item $url->params_string
+
 =item $url->params_string( $str )
 
 Get string representation of query parameters.  
@@ -530,7 +552,9 @@ You can prepare a string with $str delimiter (default is '&').
 
 
 =item $url->params_hash
+
 =item $url->params_hash( undef )
+
 =item $url->params_hash( \%params )
 
 Get or set reference to a hash with query parameters (param => value).
